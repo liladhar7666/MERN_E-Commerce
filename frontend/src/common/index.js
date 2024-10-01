@@ -1,3 +1,4 @@
+
 const backendDomain = "http://localhost:8081"
 
 const SummeryApi = {
@@ -24,6 +25,18 @@ const SummeryApi = {
     updateUser : {
           url : `${backendDomain}/api/update-user`,
           method : "post"
+    },
+    uploadProduct :{
+          url : `${backendDomain}/api/upload-product`,
+          method : "post"
+    },
+    allProduct :{
+          url : `${backendDomain}/api/get-product`,
+          method : "get"
+    },
+    updateProduct : {
+        url : `${backendDomain}/api/update-product`,
+        method : "post"
     }
 }
 export default SummeryApi
