@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import Headers from './component/Headers';
@@ -25,7 +25,7 @@ function App() {
        dispatch(setUserDetails(dataApi.data))
     } 
 
-    // console.log("data-user",dataResponse);
+   
     
   }
  

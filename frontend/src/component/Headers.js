@@ -7,7 +7,7 @@ import '../App'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import SummaryApi from '../common';
+import SummeryApi from '../common';
 import { setUserDetails } from '../store/userSlice';
 import ROLE from '../common/role';
 
@@ -16,11 +16,11 @@ const Headers = () => {
     const dispatch = useDispatch()
     const [menuDisplay,setMenuDisplay] = useState(false)
 
-   //  console.log("user header",user);
+  
 
     const handleLogout = async() => {
-      const fetchData = await fetch(SummaryApi.logout_user.url,{
-          method : SummaryApi.logout_user.method,
+      const fetchData = await fetch(SummeryApi.logout_user.url,{
+          method : SummeryApi.logout_user.method,
           credentials : 'include'
       })
       const data = await fetchData.json()
