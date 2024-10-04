@@ -5,45 +5,62 @@ import Headers from './component/Headers';
 import Footer from './component/Footer';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
-import SummaryApi from './common';
+import { useEffect, useState } from 'react';
 import Context from './context';
 import { setUserDetails } from './store/userSlice';
 import { useDispatch } from 'react-redux';
+import SummeryApi from './common';
 
 function App() {
   const dispatch = useDispatch()
+  const [cartProductCount,setCartProductCount] = useState(0)
 
   const fetchUserDetails = async()=>{
-    const dataResponse = await fetch(SummaryApi.current_user.url,{
-        method : SummaryApi.current_user.method,
+    const dataResponse = await fetch(SummeryApi.current_user.url,{
+        method : SummeryApi.current_user.method,
         credentials : 'include'
     })
     const dataApi = await dataResponse.json()
 
     if(dataApi.success){
        dispatch(setUserDetails(dataApi.data))
-    } 
-
-   
+    }  
     
   }
  
+  const fetchUserAddToCart = async()=>{
+    const dataResponse = await fetch(SummeryApi.addToCartProductCount.url,{
+      method : SummeryApi.addToCartProductCount.method,
+      credentials : 'include'
+    })
+
+    const dataApi = await dataResponse.json()
+
+    setCartProductCount(dataApi?.data?.count)
+  }
+
   useEffect(()=>{
      /**user Details**/ 
     fetchUserDetails()
+     /**user Details cart product */
+     fetchUserAddToCart()
   },[])
   
   return (
       <>
       <Context.Provider value={{
-            fetchUserDetails 
+            fetchUserDetails,
+            cartProductCount, // current user add to cart product count,
+            fetchUserAddToCart
       }}>
 
-      <ToastContainer />
+      <ToastContainer 
+         position='top-center'
+      />
+    
       <Headers/>
       <main className='min-h-[calc(100vh-120px)] pt-16'>
-       <Outlet/>
+         <Outlet/>
       </main>
       <Footer/>
       </Context.Provider>

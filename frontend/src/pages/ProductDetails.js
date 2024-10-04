@@ -4,6 +4,7 @@ import SummeryApi from '../common'
 import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import displayINRCurrency from '../helpers/displayCurrency';
+// import VerticalCardProduct from '../components/VerticalCardProduct';
 import addToCart from '../helpers/addToCart';
 import Context from '../context';
 import CategroyWiseProductDisplay from '../component/CategoryWiseProductDisplay';

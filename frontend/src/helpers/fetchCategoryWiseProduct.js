@@ -1,4 +1,7 @@
-const { default: SummeryApi } = require("../common")
+// const { default: SummeryApi } = require("../common")
+
+import SummeryApi from "../common"
+
 
 const fetchCategoryWiseProduct = async(category)=>{
     const response = await fetch(SummeryApi.categoryWiseProduct.url,{
